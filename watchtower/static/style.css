@@ -1,0 +1,27 @@
+body {
+    background-color: #cad2db;
+    color: #3a4450;
+  }
+
+form {
+    margin-top: .5em;
+}
+
+.main_frame {
+    margin-top: 2em;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.801);
+    border: 1px solid #3a4450;
+    border-radius: .25rem;
+  }
+
+.btn-outline-blue {
+    color: #3a4450;
+    border-color: #3a4450;
+}
+
+.btn-blue, .btn-blue:hover {
+    color: #fff;
+    background-color: #3a4450;
+    border-color: #3a4450;
+}

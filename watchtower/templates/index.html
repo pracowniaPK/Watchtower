@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Local CSS file -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <title>Watchtower 🏰</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-8 main_frame">
+
+        <div class="container">
+          <h1 class="display-4">Watchtower</h1>
+          <p class="lead">3 websites up, 2 warnings.</p>
+        </div>
+
+        {% for check in checks %}
+        {% if check.ok == 1 %}
+        <div class="card mb-1">
+          <div class="card-body mb-1">
+        {% else %}
+        <div class="card border-danger mb-1">
+          <div class="card-body text-danger">
+        {% endif %}
+            <h5 class="card-title">{{ check.address }}</h5>
+            <p class="card-text">
+            {% if check.code != 0 %}
+            Site loaded with code <strong>{{ check.code }}</strong>, response time: <strong>{{ check.responsetime }}ms</strong>.
+            {% else %}
+            Site <strong>failed to load</strong>.
+            {% endif %}
+            {% if check.notes is string %}
+            <br />
+            {{ check.notes }}
+            {% endif %}
+            <br />
+            Last update: {{ check.created }}.
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+        
+        <!-- <h1 class="display-2">fin</h1>
+
+        <div class="card border-danger mb-1">
+          <div class="card-body text-danger">
+            <h5 class="card-title">http://oops.pl</h5>
+            <p class="card-text">Server responded with status code 500. Response time: 37ms.</p>
+          </div>
+        </div>
+
+        <div class="card mb-1">
+          <div class="card-body">
+            <h5 class="card-title">http://bioinfo.pl</h5>
+            <p class="card-text">Site succesfully loaded with response time: 53ms.</p>
+          </div>
+        </div>
+
+        <div class="card border-danger mb-1">
+            <div class="card-body text-danger">
+            <h5 class="card-title">http://yahoo.com</h5>
+            <p class="card-text">Content does not match. Response time: 53ms.</p>
+          </div>
+        </div>
+
+        <div class="card border-danger mb-1">
+          <div class="card-body text-danger">
+            <h5 class="card-title">http://nope.io</h5>
+            <p class="card-text">Request timed out.</p>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-body">
+            <button class="btn btn-outline-blue" type="button" data-toggle="collapse" data-target="#collapseAddNew"
+              aria-expanded="false" aria-controls="collapseAddNew">
+              Add new service
+            </button>
+            <div class="collapse" id="collapseAddNew">
+              <form>
+                <div class="form-group">
+                  <label for="inputTarget">Target address</label>
+                  <input type="text" class="form-control" id="inputTarget" aria-describedby="inputTarget"
+                    placeholder="Enter target adress">
+                  
+                </div>
+                <div class="form-group">
+                  <label for="inputMatchText">Text to match</label>
+                  <input type="text" class="form-control" id="inputMatchText" aria-describedby="inputMatchText"
+                    placeholder="Enter target adress">
+                  <small class="form-text text-muted">fragment of site content, that will be used to determine service
+                    availability</small>
+                </div>
+                <button type="submit" class="btn btn-blue">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+      <div class="col-lg-2">
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
