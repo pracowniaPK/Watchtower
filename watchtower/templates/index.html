@@ -23,7 +23,10 @@
 
         <div class="container">
           <h1 class="display-4">Watchtower</h1>
-          <p class="lead">{{ ok }} websites up, {{ err }} warnings.</p>
+          <p class="lead">{{ ok }} websites up 
+            {% if err != 0 %}
+            <br /><span class="text-danger">{{ err }} warnings</span></p>
+            {% endif %}
         </div>
 
         {% for check in checks %}
@@ -52,7 +55,7 @@
         </div>
         {% endfor %}
 
-        <div class="card mt-3">
+        <div class="card mt-3 mb-1">
           <div class="card-body">
             <a class="btn btn-outline-blue" href="/get_log">
               Get log file
@@ -60,6 +63,7 @@
           </div>
         </div>
 
+        <p class="small text-center mb-0">ΠK 2019</p>
       </div>
       <div class="col-lg-2">
       </div>
