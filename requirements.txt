@@ -1,4 +1,6 @@
 flask
 requests
 apscheduler
-flask_apscheduler
+click
+pytest
+coverage
