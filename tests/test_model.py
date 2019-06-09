@@ -1,6 +1,6 @@
 import pytest
 
-from watchtower.app import get_check_job
+from watchtower import get_check_job
 from watchtower.model import check
 
 

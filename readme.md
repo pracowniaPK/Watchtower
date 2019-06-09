@@ -12,13 +12,13 @@ $ python3 -m venv venv
 $ source venv/bin/activate
 $ pip install -r requirements.txt
 $ pip install -e .
-$ export FLASK_APP=watchtower.app:create_app
+$ export FLASK_APP=watchtower:create_app
 $ flask init_db
 ```
 ### Run server
 ```
 $ source venv/bin/activate
-$ export FLASK_APP=watchtower.app:create_app
+$ export FLASK_APP=watchtower:create_app
 $ export FLASK_ENV=development
 $ flask run
 ```

@@ -3,7 +3,7 @@ import tempfile
 
 import pytest
 
-from watchtower.app import create_app
+from watchtower import create_app
 from watchtower.db import init_db
 
 

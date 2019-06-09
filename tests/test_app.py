@@ -1,4 +1,4 @@
-from watchtower.app import create_app
+from watchtower import create_app
 from watchtower.model import check
 
 
