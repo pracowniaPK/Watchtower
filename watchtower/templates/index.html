@@ -23,7 +23,7 @@
 
         <div class="container">
           <h1 class="display-4">Watchtower</h1>
-          <p class="lead">3 websites up, 2 warnings.</p>
+          <p class="lead">{{ ok }} websites up, {{ err }} warnings.</p>
         </div>
 
         {% for check in checks %}

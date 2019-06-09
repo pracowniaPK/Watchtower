@@ -1,4 +1,5 @@
-from db import get_db 
+from watchtower.db import get_db 
+
 
 class check:
     def __init__(self, address, code, response_time, notes=None):

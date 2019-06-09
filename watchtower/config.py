@@ -3,7 +3,7 @@ sites_list = [
     ('https://nope.oi/', 'stuff'),
     ('https://bioinfo.pl/', 'BioInfoBank Institute'),
     ('https://www.yahoo.com/', 'qwerasdf'),
-    ('http://www.error418.net/', 'teapot'),
+    ('https://www.google.com/teapot', 'teapot'),
     ('http://127.0.0.1:5000/timeout', 'late'),
 ]
 
