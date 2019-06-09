@@ -3,7 +3,7 @@ import time
 import os
 import math
 
-from flask import Flask, render_template
+from flask import Flask, render_template, Response
 from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 
@@ -65,13 +65,28 @@ def create_app(dev_config=None):
             else:
                 err += 1
         return render_template('index.html', checks=latest, ok=ok, err=err)
+    
+    @app.route('/get_log')
+    def get_log():
+        with app.app_context():
+            latest = check.db_get_latest()
+        log = ''
+        for ch in latest:
+            log += ('{} code: {}, response time: {}ms, notes: {}, last checked: {}\r\n'
+                .format(ch['address'], ch['code'], ch['responsetime'], ch['notes'], ch['created'])
+                )
+        return Response(
+            log, 
+            mimetype='text/plain', 
+            headers={"Content-disposition": "attachment; filename=checks.log"}
+            )
 
     from watchtower import db
     db.init_app(app)
 
     check_job = get_check_job(app)
     scheduler = BackgroundScheduler()
-    scheduler.add_job(check_job, 'interval', [sites_list], seconds=12) # minutes=120)
+    scheduler.add_job(check_job, 'interval', [sites_list], seconds=120) # minutes=120)
     scheduler.start()
 
     return app
