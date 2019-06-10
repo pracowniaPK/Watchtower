@@ -20,4 +20,5 @@ def test_site_counter(client, app):
             checks[i].db_insert()
 
     rsp = client.get('/')
-    assert b'2 websites up, 1 warnings' in rsp.data
+    assert b'2 websites up' in rsp.data
+    assert b'1 warnings' in rsp.data

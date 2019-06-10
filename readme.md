@@ -1,6 +1,6 @@
 # Watchtower
 
-Watchtower is an app that periodically checks the availability of chosen websites and presents recent data on the website.
+Watchtower is an app that periodically checks the availability of chosen services and presents recent data on the website.
 
 ## Usage
 
@@ -13,9 +13,9 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 $ pip install -e .
 $ export FLASK_APP=watchtower:create_app
-$ flask init_db
+$ flask init-db
 ```
-### Run server
+### Run devserver
 ```
 $ source venv/bin/activate
 $ export FLASK_APP=watchtower:create_app
@@ -30,7 +30,7 @@ $ pytest
 
 ## Configuration
 
-The list of wbsites to be checked is stored in `watchtower\config.py` file as list tuples of addresses and content to mach. `seconds_interval` in the same file determines delay between consecutive checks. E.g.
+The list of wbsites to be checked is stored in `watchtower\config.py` file as list of tuples of addresses and content to match. `seconds_interval` in the same file determines delay between consecutive checks. E.g.
 ```
 sites_list = [
     ('https://www.google.com/', 'search'),
